@@ -2,7 +2,7 @@ import json, os, tempfile
 
 filename = open("config.cfg", "r").readline()
 
-with os.open(filename, os.O_RDONLY) as pipe_in:
+with os.open(filename, os.O_NONBLOCK | os.O_RDONLY) as pipe_in:
     while True:
         line = pipe_in.readline()
 

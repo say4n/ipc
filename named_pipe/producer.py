@@ -16,7 +16,7 @@ except Exception:
     os.mkfifo(filename)
 
 
-pipe_out = os.open(filename, os.O_WRONLY)
+pipe_out = os.open(filename, os.O_NONBLOCK | os.O_WRONLY)
 
 for i in range(1000):
     data = json.dumps({"num": i}).encode('utf-8')
