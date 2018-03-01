@@ -1,6 +1,5 @@
 import threading
 import time
-import random
 import logging
 
 class ConsumerThread(threading.Thread):
@@ -16,5 +15,6 @@ class ConsumerThread(threading.Thread):
         while True:
             if not self.queue.empty():
                 item = self.queue.get()
-                logging.debug('Getting ' + str(item) 
+                delta = time.time() - item["now"]
+                logging.debug('Delta ' + str(delta) 
                               + ' : ' + str(self.queue.qsize()) + ' items in queue')

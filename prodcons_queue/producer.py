@@ -1,6 +1,5 @@
 import threading
 import time
-import random
 import logging
 
 class ProducerThread(threading.Thread):
@@ -15,7 +14,7 @@ class ProducerThread(threading.Thread):
     def run(self, queue=None):
         while True:
             if not self.queue.full():
-                item = random.randint(1,10)
+                item = {"now": time.time()}
                 self.queue.put(item)
-                logging.debug('Putting ' + str(item)  
+                logging.debug('Putting item'  
                               + ' : ' + str(self.queue.qsize()) + ' items in queue')
