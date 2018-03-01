@@ -19,4 +19,3 @@ class ProducerThread(threading.Thread):
                 self.queue.put(item)
                 logging.debug('Putting ' + str(item)  
                               + ' : ' + str(self.queue.qsize()) + ' items in queue')
-                time.sleep(random.random())

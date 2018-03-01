@@ -5,7 +5,7 @@ from producer import ProducerThread
 from consumer import ConsumerThread
 
 logging.basicConfig(level=logging.DEBUG,
-                    format='(%(threadName)-10s) %(message)s')
+                    format='(%(threadName)-8s) %(message)s')
 
 BUF_SIZE = 100
 q = queue.Queue(BUF_SIZE)

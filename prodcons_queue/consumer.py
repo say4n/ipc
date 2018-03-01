@@ -18,4 +18,3 @@ class ConsumerThread(threading.Thread):
                 item = self.queue.get()
                 logging.debug('Getting ' + str(item) 
                               + ' : ' + str(self.queue.qsize()) + ' items in queue')
-                time.sleep(random.random())
