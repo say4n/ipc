@@ -11,10 +11,15 @@ class ProducerThread(threading.Thread):
         self.name = name
         self.queue = queue
 
+        self.items = 0
+
     def run(self, queue=None):
-        while True:
+        while self.items < 1000:
             if not self.queue.full():
                 item = {"now": time.time()}
                 self.queue.put(item)
+                
                 logging.debug('Putting item'  
                               + ' : ' + str(self.queue.qsize()) + ' items in queue')
+                
+                self.items += 1

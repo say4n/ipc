@@ -11,10 +11,15 @@ class ConsumerThread(threading.Thread):
         self.name = name
         self.queue = queue
 
+        self.items = 0
+
     def run(self):
-        while True:
+        while self.items < 1000:
             if not self.queue.empty():
                 item = self.queue.get()
+                
                 delta = time.time() - item["now"]
                 logging.debug('Delta ' + str(delta) 
                               + ' : ' + str(self.queue.qsize()) + ' items in queue')
+
+                self.items += 1
